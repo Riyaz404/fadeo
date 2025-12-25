@@ -78,6 +78,8 @@ main {
     radial-gradient(circle at 20% 30%, rgba(124,58,237,.35), transparent 45%),
     radial-gradient(circle at 80% 20%, rgba(167,139,250,.25), transparent 40%),
     #050508;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-inner {
@@ -87,6 +89,8 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* LEFT TEXT */
@@ -153,7 +157,7 @@ main {
   padding: 14px;
   box-shadow: 0 30px 80px rgba(124, 58, 237, 0.4);
   animation: float 3s ease-in-out infinite;
-  overflow: hidden; /* important so video doesn't spill out */
+  overflow: hidden;
 }
 
 .phone-screen {
@@ -164,17 +168,6 @@ main {
   position: relative;
 }
 
-/* Video inside phone */
-.fedo-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* scales video to fill phone without distortion */
-  object-position: center; /* keeps main content centered */
-  display: block;
-  border-radius: 24px;
-}
-
-/* Optional placeholder (before you replace with video) */
 .video-placeholder {
   width: 100%;
   height: 100%;
@@ -187,6 +180,7 @@ main {
   background: #1a1a1f;
 }
 
+/* ANIMATED BACKGROUND WORDS */
 .hero .background-words {
   position: absolute;
   top: 0;
@@ -207,11 +201,9 @@ main {
 }
 
 .hero .word:nth-child(1) { top: 15%; left: 5%; animation-delay: 0s; }
-.hero .word:nth-child(2) { top: 35%; right: 10%; animation-delay: 0s; }
-.hero .word:nth-child(3) { bottom: 25%; left: 15%; animation-delay: 0s; }
-.hero .word:nth-child(4)  { top: 5%;  left: 5%;   animation-delay: 0s; }
-
-
+.hero .word:nth-child(2) { top: 35%; right: 10%; animation-delay: 5s; }
+.hero .word:nth-child(3) { bottom: 25%; left: 15%; animation-delay: 10s; }
+.hero .word:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 15s; }
 
 /* ---------- WORKS ---------- */
 
@@ -282,7 +274,7 @@ main {
   z-index: 2;
 }
 
-.background-words {
+.emotional .background-words {
   position: absolute;
   top: 0;
   left: 0;
@@ -291,7 +283,7 @@ main {
   pointer-events: none;
 }
 
-.word {
+.emotional .word {
   position: absolute;
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.1);
@@ -300,10 +292,10 @@ main {
   filter: blur(1px);
 }
 
-.word:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.word:nth-child(2) { top: 40%; right: 15%; animation-delay: 3.75s; }
-.word:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 7.5s; }
-.word:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 11.25s; }
+.emotional .word:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.emotional .word:nth-child(2) { top: 40%; right: 15%; animation-delay: 3.75s; }
+.emotional .word:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 7.5s; }
+.emotional .word:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 11.25s; }
 
 /* ---------- DISAPPEARING POST ---------- */
 
@@ -375,6 +367,16 @@ main {
     padding: 0.25rem;
   }
 
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-inner {
+    padding: 1rem;
+    gap: 2rem;
+  }
+
   .hero-text h1 {
     font-size: 2.2rem;
   }
@@ -386,6 +388,7 @@ main {
   .store-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
   }
 
   .store-btn {
@@ -395,8 +398,14 @@ main {
   }
 
   .phone-frame {
-    width: 240px;
-    height: 480px;
+    width: 100%;
+    max-width: 280px;
+    height: 560px;
+    margin: 0 auto;
+  }
+
+  .hero .word {
+    font-size: 1.8rem;
   }
 
   .works {
@@ -425,7 +434,7 @@ main {
     font-size: 2rem;
   }
 
-  .word {
+  .emotional .word {
     font-size: 1.5rem;
   }
 
